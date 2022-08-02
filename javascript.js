@@ -1,34 +1,30 @@
 const choices = ["rock", "paper", "scissor"];
 
-let userEntry = document.getElementById('userEntry').value.toLowerCase();
+const btns = document.querySelectorAll('button');
 
 const result = document.getElementById('result');
+let computerChoice = choices[Math.floor(Math.random()*choices.length)];
 
-function game() {;
-  result.textContent = '';
-
-  if (choices.includes(userEntry)) {
-    let computerChoice = choices[Math.floor(Math.random()*choices.length)];
-    gameResult(userEntry, computerChoice);
-  };
-}
+btns.forEach(btn => btn.addEventListener('click', function() {
+  gameResult(btn.id, computerChoice);
+}));
 
 function gameResult(userEntry, computerChoice) {
   if (userEntry == computerChoice) {
-    result.innerHTML = "Draw!<br><br>Your pick: " + userEntry + " Computer pick: " + computerChoice;
+    result.textContent = "Draw!\r\nYour pick: " + userEntry + "\r\nComputer pick: " + computerChoice;
   } else if (userEntry == "rock" && computerChoice == "paper") {
-    result.innerHTML = "You lose!<br><br>Your pick: " + userEntry + " Computer pick: " + computerChoice;
+    result.textContent = "You lose!\r\nYour pick: " + userEntry + "\r\nComputer pick: " + computerChoice;
   } else if (userEntry == "rock" && computerChoice == "scissor") {
-    result.innerHTML = "You won!<br><br>Your pick: " + userEntry + " Computer pick: " + computerChoice;
+    result.textContent = "You won!\r\nYour pick: " + userEntry + "\r\nComputer pick: " + computerChoice;
   } else if (userEntry == "paper" && computerChoice == "scissor") {
-    result.innerHTML = "You lose!<br><br>Your pick: " + userEntry + " Computer pick: " + computerChoice;
+    result.textContent = "You lose!\r\nYour pick: " + userEntry + "\r\nComputer pick: " + computerChoice;
   } else if (userEntry == "paper" && computerChoice == "rock") {
-    result.innerHTML = "You won!<br><br>Your pick: " + userEntry + " Computer pick: " + computerChoice;
+    result.textContent = "You won!\r\nYour pick: " + userEntry + "\r\nComputer pick: " + computerChoice;
   } else if (userEntry == "scissor" && computerChoice == "rock") { 
-    result.innerHTML = "You lose!<br><br>Your pick: " + userEntry + " Computer pick: " + computerChoice;
+    result.textContent = "You lose!\r\nYour pick: " + userEntry + "\r\nComputer pick: " + computerChoice;
   } else if (userEntry == "scissor" && computerChoice == "paper") {
-    result.innerHTML = "You won!<br><br>Your pick: " + userEntry + " Computer pick: " + computerChoice;
+    result.textContent = "You won!\r\nYour pick: " + userEntry + "\r\nComputer pick: " + computerChoice;
   } else {
-    result.innerHTML = "Pick between 'Rock Paper Scissor'";
+    result.textContent = "Pick between 'Rock Paper Scissor'";
   }
 }
